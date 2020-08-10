@@ -9,9 +9,6 @@ import store from './store'
 
 //this is to import private Route
 import PrivateRoute from './components/common/PrivateRoute'
-
-
-
 import Navbar from './components/Layouts/Navbar'
 import Footer from './components/Layouts/Footer'
 import Landing from './components/Layouts/Landing'
@@ -21,8 +18,17 @@ import Dashboard from './components/dashboard/Dashboard'
 import CreateProfile from './components/create-profile/CreateProfile'
 import EditProfile from './components/edit-profile/EditProfile'
 import AddExperience from './components/add-credentials/AddExperience'
-
+import AddEducation from './components/add-credentials/AddEducation';
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
+import NotFound from './components/not-found/NotFound';
 import './App.css';
+
+
+
+
 
 
 // check for token
@@ -58,6 +64,8 @@ function App() {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
 
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -75,6 +83,19 @@ function App() {
               <PrivateRoute exact path="/add-experience" component={AddExperience} />
             </Switch>
 
+            <Switch>
+              <PrivateRoute exact path="/add-education" component={AddEducation} />
+            </Switch>
+
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Posts} />
+            </Switch>
+
+            <Switch>
+              <PrivateRoute exact path="/post/:id" component={Post} />
+            </Switch>
+
+            <Route exact path="/profile/not-found" component={NotFound} />
           </div>
           <Footer />
         </div>

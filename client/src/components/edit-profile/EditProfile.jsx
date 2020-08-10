@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup'
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup'
@@ -37,48 +37,48 @@ class CreateProfile extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.errors){
+        if (nextProps.errors) {
             this.setState({ errors: nextProps.errors });
         }
 
-        if(nextProps.profile.profile) {
-          const profile = nextProps.profile.profile;
+        if (nextProps.profile.profile) {
+            const profile = nextProps.profile.profile;
 
-          //Bring skill array to comma seprate value
-          const skillsCSV = profile.skills.join(',');
+            //Bring skill array to comma seprate value
+            const skillsCSV = profile.skills.join(',');
 
-          // if profile field doesnt exist make empty string
-          profile.company = !isEmpty(profile.company)? profile.company: ''
-          profile.website = !isEmpty(profile.website)? profile.website: ''
-          profile.location = !isEmpty(profile.location)? profile.location: ''
-          profile.githubusername = !isEmpty(profile.githubusername)? profile.githubusername: ''
-          profile.bio = !isEmpty(profile.bio)? profile.bio: ''
-          profile.social = !isEmpty(profile.social)? profile.social: {}
-          //for each social handle
-          profile.twitter = !isEmpty(profile.social.twitter)? profile.social.twitter: ''
-          profile.facebook = !isEmpty(profile.social.facebook)? profile.social.facebook: ''
-          profile.linkedin = !isEmpty(profile.social.linkedin)? profile.social.linkedin: ''
-          profile.youtube = !isEmpty(profile.social.youtube)? profile.social.youtube: ''
-          profile.instagram = !isEmpty(profile.social.instagram)? profile.social.instagram: ''
+            // if profile field doesnt exist make empty string
+            profile.company = !isEmpty(profile.company) ? profile.company : ''
+            profile.website = !isEmpty(profile.website) ? profile.website : ''
+            profile.location = !isEmpty(profile.location) ? profile.location : ''
+            profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : ''
+            profile.bio = !isEmpty(profile.bio) ? profile.bio : ''
+            profile.social = !isEmpty(profile.social) ? profile.social : {}
+            //for each social handle
+            profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : ''
+            profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : ''
+            profile.linkedin = !isEmpty(profile.social.linkedin) ? profile.social.linkedin : ''
+            profile.youtube = !isEmpty(profile.social.youtube) ? profile.social.youtube : ''
+            profile.instagram = !isEmpty(profile.social.instagram) ? profile.social.instagram : ''
 
-          //set component field state
-          this.setState({
-              
-            handle: profile.handle,
-            company: profile.company,
-            website: profile.website,
-            location: profile.location,
-            status: profile.status,
-            skills: skillsCSV,
-            githubusername: profile.githubusername,
-            bio: profile.bio,
-            twitter: profile.twitter,
-            facebook: profile.facebook,
-            linkedin: profile.linkedin,
-            youtube: profile.youtube,
-            instagram: profile.instagram
+            //set component field state
+            this.setState({
 
-          })
+                handle: profile.handle,
+                company: profile.company,
+                website: profile.website,
+                location: profile.location,
+                status: profile.status,
+                skills: skillsCSV,
+                githubusername: profile.githubusername,
+                bio: profile.bio,
+                twitter: profile.twitter,
+                facebook: profile.facebook,
+                linkedin: profile.linkedin,
+                youtube: profile.youtube,
+                instagram: profile.instagram
+
+            })
 
         }
 
@@ -190,6 +190,9 @@ class CreateProfile extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
+                            <Link to="/dashboard" className="btn btn-light">
+                                Go Back
+                            </Link>
                             <h1 className="display-4 text-center">Edit Profile</h1>
                             <small className="d-block pb-3">* = required fields</small>
                             <form onSubmit={this.onSubmit}>
@@ -272,12 +275,12 @@ class CreateProfile extends Component {
 
                                 <div className="mb-3">
                                     <buuton
-                                      type="button"
-                                     onClick={() => {
-                                        this.setState(prevState => ({
-                                            displaySocialInputs: !prevState.displaySocialInputs
-                                        }))
-                                    }} className="btn btn-light">
+                                        type="button"
+                                        onClick={() => {
+                                            this.setState(prevState => ({
+                                                displaySocialInputs: !prevState.displaySocialInputs
+                                            }))
+                                        }} className="btn btn-light">
                                         Add Social Network Links
                                     </buuton>
                                     <span className="text-muted">Optional</span>
