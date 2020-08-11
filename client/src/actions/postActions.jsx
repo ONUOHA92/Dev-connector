@@ -12,18 +12,22 @@ import {
 
 //add post 
 export const addPost = postData => dispatch => {
-    dispatch(clearErrors())
+    dispatch(clearErrors());
     axios
-        .post('/api/posts', postData)
-        .then(res => dispatch({
-            type: ADD_POST,
-            payload: res.data
-        }))
-        .catch(err => dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        }))
-}
+      .post('/api/posts', postData)
+      .then(res =>
+        dispatch({
+          type: ADD_POST,
+          payload: res.data
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  };
 
 
 //Get posts
@@ -60,16 +64,20 @@ export const getPost  = (id) => dispatch => {
 //delete post 
 export const deletePost = id => dispatch => {
     axios
-        .delete(`/api/posts/${id}`)
-        .then(res => dispatch({
-            type: DELETE_POST,
-            payload: id
-        }))
-        .catch(err => dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        }))
-}
+      .delete(`/api/posts/${id}`)
+      .then(res =>
+        dispatch({
+          type: DELETE_POST,
+          payload: id
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  };
 
 // add likes
 export const addLike = id => dispatch => {

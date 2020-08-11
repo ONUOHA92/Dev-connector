@@ -9,7 +9,7 @@ import { deletePost, addLike, removeLike } from '../../actions/postActions';
 
 class PostItem extends Component {
 
-    onDeletClick(id) {
+    onDeleteClick(id) {
         this.props.deletePost(id)
     }
 
