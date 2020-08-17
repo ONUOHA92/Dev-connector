@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthtoken from './utils/setAuthToken'
@@ -9,6 +9,7 @@ import store from './store'
 
 //this is to import private Route
 import PrivateRoute from './components/common/PrivateRoute'
+
 import Navbar from './components/Layouts/Navbar'
 import Footer from './components/Layouts/Footer'
 import Landing from './components/Layouts/Landing'
@@ -24,6 +25,7 @@ import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import NotFound from './components/not-found/NotFound';
+
 import './App.css';
 
 
@@ -54,7 +56,8 @@ if (localStorage.jwtToken) {
 
 }
 
-function App() {
+class App extends Component {
+  render() {
   return (
     <Provider store={store}>
       <Router>
@@ -103,6 +106,7 @@ function App() {
     </Provider>
 
   );
+  }
 }
 
 export default App;
